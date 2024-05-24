@@ -3,5 +3,5 @@ module "s3" {
 }
 
 module "lambda" {
-	source = "./modules/lambda-function"
+	source = "./modules/lambda_function"
 }
