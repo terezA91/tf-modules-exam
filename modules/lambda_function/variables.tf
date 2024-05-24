@@ -10,9 +10,7 @@ variable "runtime_lang" {
 	default = "python3.12"
 }
 
-/*
-variable "lf_arn" {
+variable "bucket_arn" {
 	type = string
-	descripton = "Arn of lambda function"
+	description = "Arn of s3 bucket"
 }
-*/

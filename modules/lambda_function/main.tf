@@ -64,3 +64,11 @@ resource "aws_lambda_function" "tf-lambda-up" {
 	handler = "${local.file_name}.lambda_handler"
 	runtime = var.runtime_lang	
 }
+
+resource "aws_lambda_permission" "alp" {
+	statement_id = "AllowExecutionFromS3"
+	action = "lambda:InvokeFunction"
+	function_name = aws_lambda_function.tf-lambda-up.arn
+	principal = "s3.amazonaws.com"
+	source_arn = var.bucket_arn 
+}

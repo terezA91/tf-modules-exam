@@ -30,6 +30,7 @@ resource "aws_s3_bucket_versioning" "bv" {
 resource "aws_s3_bucket_notification" "bn" {
 	bucket = aws_s3_bucket.b1.id
 	lambda_function {
-		lambda_function_arn = aws_lambda_function.tf-lambda-up.arn
+		lambda_function_arn = var.lf_arn
+		events = ["s3:ObjectCreated:*"]
 	}
 }
