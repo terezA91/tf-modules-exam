@@ -1,7 +1,7 @@
 variable "bucket_name" {
 	type = string
 	description = "Name of the s3 bucket"
-	default = "My S3 bucket"
+	default = "helma-543"
 }
 
 variable "destroy_bucket" {
