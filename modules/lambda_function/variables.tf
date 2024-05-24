@@ -1,6 +1,7 @@
 variable "source_dir" {
 	type = string
 	description = "Source directory of target file containing Lambda function"
+	default = "../../python"
 }
 
 variable "runtime_lang" {
