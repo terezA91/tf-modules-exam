@@ -1,5 +1,6 @@
 module "s3" {
 	source = "./modules/s3"
+	count = 2
 	lf_arn = module.lambda.lf_arn
 }
 

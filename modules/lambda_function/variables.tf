@@ -1,13 +1,19 @@
+variable "create_lf" {
+	type = bool
+	default = true
+	descripton = "Create a lambda function or not"
+}
+
 variable "source_dir" {
 	type = string
-	description = "Source directory of target file containing Lambda function"
 	default = "../../python"
+	description = "Source directory of target file containing Lambda function"
 }
 
 variable "runtime_lang" {
 	type = string
-	description = "Type and version of the runtime language"
 	default = "python3.12"
+	description = "Type and version of the runtime language"
 }
 
 variable "bucket_arn" {
