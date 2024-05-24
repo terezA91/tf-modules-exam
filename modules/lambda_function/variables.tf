@@ -9,3 +9,10 @@ variable "runtime_lang" {
 	description = "Type and version of the runtime language"
 	default = "python3.12"
 }
+
+/*
+variable "lf_arn" {
+	type = string
+	descripton = "Arn of lambda function"
+}
+*/

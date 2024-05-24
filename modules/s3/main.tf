@@ -26,3 +26,10 @@ resource "aws_s3_bucket_versioning" "bv" {
 		status = var.enable_versioning[0]
 	}
 }
+
+resource "aws_s3_bucket_notification" "bn" {
+	bucket = aws_s3_bucket.b1.id
+	lambda_function {
+		lambda_function_arn = aws_lambda_function.tf-lambda-up.arn
+	}
+}
