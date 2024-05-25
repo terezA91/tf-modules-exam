@@ -4,6 +4,12 @@ variable "bucket_name" {
 	default = "helma-543"
 }
 
+variable "bucket_prefix" {
+	type = string
+	default = "helma"
+	description = "Creates a unique bucket name beginning with the specified prefix"
+}
+
 variable "destroy_bucket" {
 	type = bool
 	description = "Delete an bucket regardless of the presence of the object"

@@ -5,7 +5,7 @@ provider "aws" {
 
 resource "aws_s3_bucket" "b1" {
 	#bucket = var.bucket_name
-	bucket_prefix = "helma"
+	bucket_prefix = bucket ? "" : var.bucket_prefix
 	force_destroy = var.destroy_bucket
 	
 	tags = {
