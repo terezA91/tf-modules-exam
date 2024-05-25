@@ -1,7 +1,7 @@
 variable "create_lf" {
 	type = bool
 	default = true
-	descripton = "Create a lambda function or not"
+	description = "Create a lambda function or not"
 }
 
 variable "source_dir" {
