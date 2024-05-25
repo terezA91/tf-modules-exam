@@ -4,7 +4,8 @@ provider "aws" {
 }
 
 resource "aws_s3_bucket" "b1" {
-	bucket = var.bucket_name
+	#bucket = var.bucket_name
+	bucket_prefix = "helma"
 	force_destroy = var.destroy_bucket
 	
 	tags = {
@@ -35,6 +36,7 @@ resource "aws_s3_bucket_website_configuration" "web" {
 	}
 }
 
+/*ver
 resource "aws_s3_bucket_notification" "bn" {
 	bucket = aws_s3_bucket.b1.id
 	lambda_function {
@@ -42,3 +44,4 @@ resource "aws_s3_bucket_notification" "bn" {
 		events = ["s3:ObjectCreated:*"]
 	}
 }
+*/
