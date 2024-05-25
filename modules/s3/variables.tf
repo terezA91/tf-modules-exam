@@ -11,9 +11,15 @@ variable "destroy_bucket" {
 }
 
 variable "enable_versioning" {
-	type = list
+	type = list(string)
 	description = "Enable bucket versioning or not"
 	default = ["Disabled", "Enabled", "Suspended"]
+}
+
+variable "as_website" {
+	type = bool
+	description = "Create a bucket as a website(default) or as a storage"
+	default = true
 }
 
 variable "s3_block_public_policy" {

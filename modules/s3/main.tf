@@ -27,6 +27,14 @@ resource "aws_s3_bucket_versioning" "bv" {
 	}
 }
 
+resource "aws_s3_bucket_website_configuration" "web" {
+	count = var.as_website == true ? 1 : 0  
+	bucket = aws_s3_bucket.b1.id
+	index_document {
+		suffix = "index.html"
+	}
+}
+
 resource "aws_s3_bucket_notification" "bn" {
 	bucket = aws_s3_bucket.b1.id
 	lambda_function {
