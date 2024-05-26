@@ -51,8 +51,9 @@ variable "s3_restrict_public_buckets" {
 	default = false
 }
 
+/*ver
 variable "lf_arn" {
 	type = string
 	description = "Arn of lambda function"
 }
-
+*/
