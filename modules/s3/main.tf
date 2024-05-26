@@ -37,8 +37,9 @@ resource "aws_s3_bucket_website_configuration" "web" {
 }
 
 resource "aws_s3_bucket_accelerate_configuration" "s1" {
+	count = var.accelerate ? 1 : 0
   bucket = aws_s3_bucket.b1.id
-  status = "Suspended"  //or <Enabled>
+  status = "Enabled"
 }
 
 resource "aws_s3_object" "ob" {
@@ -59,7 +60,7 @@ resource "aws_s3_bucket_notification" "bn" {
 resource "aws_s3_directory_bucket" "db" {
 	bucket = "example--usw2-az1--x-s3"
 	location {
-		name = var.az[1]
+		name = "eu-north-1"
 	}
   //Bucket name must be in the following format
 	//[bucket_name]--[azid]--x-s3

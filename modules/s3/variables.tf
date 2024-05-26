@@ -28,6 +28,12 @@ variable "as_website" {
 	default = true
 }
 
+variable "accelerate" {
+	type = bool
+	default = false
+	description = "Enable bucket_acceleration or not"
+}
+
 variable "object_source" {
 	type = string
 	description = "Source path of the s3 bucket object"
@@ -49,6 +55,12 @@ variable "s3_restrict_public_buckets" {
 	type = bool
 	description = "Restrict public buckets in s3 or not"
 	default = false
+}
+
+variable "directory_bucket" {
+	type = bool
+	default = false //Creating <General purpose bucket>
+	description = "Create bucket of type <General purpose> or <directory>"
 }
 
 /*ver
