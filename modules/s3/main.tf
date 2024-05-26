@@ -36,6 +36,11 @@ resource "aws_s3_bucket_website_configuration" "web" {
 	}
 }
 
+resource "aws_s3_bucket_accelerate_configuration" "s1" {
+  bucket = aws_s3_bucket.b1.id
+  status = "Suspended"  //or <Enabled>
+}
+
 resource "aws_s3_object" "ob" {
 	bucket = aws_s3_bucket.id
 	source = var.object_source
@@ -50,14 +55,7 @@ resource "aws_s3_bucket_notification" "bn" {
 		events = ["s3:ObjectCreated:*"]
 	}
 }
-*/
 
-resource "aws_s3_bucket_accelerate_configuration" "s1" {
-	bucket = aws_s3_bucket.b1.id
-	status = "Suspended"  //or <Enabled> 
-}
-
-/*
 resource "aws_s3_directory_bucket" "db" {
 	bucket = "example--usw2-az1--x-s3"
 	location {
@@ -74,3 +72,4 @@ resource "aws_s3_bucket_ownership_controls" "s1" {
 		#object_ownership = "ObjectWriter"
 	}
 }
+*/
