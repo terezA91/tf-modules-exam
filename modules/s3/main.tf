@@ -42,7 +42,7 @@ resource "aws_s3_bucket_accelerate_configuration" "s1" {
 }
 
 resource "aws_s3_object" "ob" {
-	bucket = aws_s3_bucket.id
+	bucket = aws_s3_bucket.b1.id
 	source = var.object_source
 	key = var.object_name
 }
