@@ -4,6 +4,7 @@ provider "aws" {
 }
 
 resource "aws_s3_bucket" "b1" {
+	count = var.directory_bucket ? 0 : 1
 	bucket = var.bucket_name
 	#bucket_prefix = "helma"  //for unique bucket_name
 	force_destroy = var.destroy_bucket
@@ -11,6 +12,22 @@ resource "aws_s3_bucket" "b1" {
 	tags = {
 		Name = "Custom bucket"
 	}
+}
+
+resource "aws_s3_directory_bucket" "db" {
+	count = var.directory_bucket ? 1 : 0
+  bucket = "${var.bucket_name}--usw2-az1--x-s3"
+  location {
+    name = "eu-north-1"
+  }
+  //Bucket name must be in the following format
+  //[bucket_name]--[azid]--x-s3
+}
+
+resource "aws_s3_object" "ob" {
+  bucket = aws_s3_bucket.b1.id
+  source = var.object_source
+  key = var.object_name
 }
 
 resource "aws_s3_bucket_public_access_block" "exam" {
@@ -42,10 +59,13 @@ resource "aws_s3_bucket_accelerate_configuration" "s1" {
   status = "Enabled"
 }
 
-resource "aws_s3_object" "ob" {
-	bucket = aws_s3_bucket.b1.id
-	source = var.object_source
-	key = var.object_name
+resource "aws_s3_bucket_ownership_controls" "s1" {
+	count = var.enable_acl ? 1 : 0
+  bucket = aws_s3_bucket.b1.id
+  rule {
+    object_ownership = "BucketOwnerPreferred"
+    #object_ownership = "ObjectWriter"
+  }
 }
 
 /*ver
@@ -54,23 +74,6 @@ resource "aws_s3_bucket_notification" "bn" {
 	lambda_function {
 		lambda_function_arn = var.lf_arn
 		events = ["s3:ObjectCreated:*"]
-	}
-}
-
-resource "aws_s3_directory_bucket" "db" {
-	bucket = "example--usw2-az1--x-s3"
-	location {
-		name = "eu-north-1"
-	}
-  //Bucket name must be in the following format
-	//[bucket_name]--[azid]--x-s3
-}
-
-resource "aws_s3_bucket_ownership_controls" "s1" {
-	bucket = aws_s3_bucket.b1.id
-	rule {
-		object_ownership = "BucketOwnerPreferred"
-		#object_ownership = "ObjectWriter"
 	}
 }
 */

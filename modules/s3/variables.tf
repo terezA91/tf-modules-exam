@@ -16,6 +16,35 @@ variable "destroy_bucket" {
 	default = true
 }
 
+variable "directory_bucket" {
+  type = bool
+  default = false //Creating <General purpose bucket>
+  description = "Create bucket of type <General purpose> or <directory>"
+}
+
+variable "object_source" {
+  type = string
+  description = "Source path of the s3 bucket object"
+}
+
+variable "object_name" {
+  type = string
+  default = "s3-object"
+  description = "User-defined object name of the bucket"
+}
+
+variable "s3_block_public_policy" {
+  type = bool
+  description = "Block `public_policy` in s3 or not"
+  default = false
+}
+
+variable "s3_restrict_public_buckets" {
+  type = bool
+  description = "Restrict public buckets in s3 or not"
+  default = false
+}
+
 variable "enable_versioning" {
 	type = list(string)
 	description = "Enable bucket versioning or not"
@@ -34,33 +63,10 @@ variable "accelerate" {
 	description = "Enable bucket_acceleration or not"
 }
 
-variable "object_source" {
-	type = string
-	description = "Source path of the s3 bucket object"
-}
-
-variable "object_name" {
-	type = string
-	default = "s3-object"
-	description = "User-defined object name of the bucket"
-}
-
-variable "s3_block_public_policy" {
-	type = bool
-	description = "Block `public_policy` in s3 or not"
-	default = false
-}
-
-variable "s3_restrict_public_buckets" {
-	type = bool
-	description = "Restrict public buckets in s3 or not"
-	default = false
-}
-
-variable "directory_bucket" {
-	type = bool
-	default = false //Creating <General purpose bucket>
-	description = "Create bucket of type <General purpose> or <directory>"
+variable "enable_acl" {
+  type = bool
+  default = false  //disabled
+  description = "Enable or disable ACL"
 }
 
 /*ver
