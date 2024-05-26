@@ -28,6 +28,17 @@ variable "as_website" {
 	default = true
 }
 
+variable "object_source" {
+	type = string
+	description = "Source path of the s3 bucket object"
+}
+
+variable "object_name" {
+	type = string
+	default = "s3-object"
+	description = "User-defined object name of the bucket"
+}
+
 variable "s3_block_public_policy" {
 	type = bool
 	description = "Block `public_policy` in s3 or not"
@@ -44,3 +55,4 @@ variable "lf_arn" {
 	type = string
 	description = "Arn of lambda function"
 }
+

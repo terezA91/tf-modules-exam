@@ -4,8 +4,8 @@ provider "aws" {
 }
 
 resource "aws_s3_bucket" "b1" {
-	#bucket = var.bucket_name
-	bucket_prefix = aws_s3_bucket.b1.bucket ? "" : var.bucket_prefix
+	bucket = var.bucket_name
+	#bucket_prefix = "helma"  //for unique bucket_name
 	force_destroy = var.destroy_bucket
 	
 	tags = {
@@ -36,6 +36,12 @@ resource "aws_s3_bucket_website_configuration" "web" {
 	}
 }
 
+resource "aws_s3_object" "ob" {
+	bucket = aws_s3_bucket.id
+	source = var.object_source
+	key = var.object_name
+}
+
 /*ver
 resource "aws_s3_bucket_notification" "bn" {
 	bucket = aws_s3_bucket.b1.id
@@ -45,3 +51,26 @@ resource "aws_s3_bucket_notification" "bn" {
 	}
 }
 */
+
+resource "aws_s3_bucket_accelerate_configuration" "s1" {
+	bucket = aws_s3_bucket.b1.id
+	status = "Suspended"  //or <Enabled> 
+}
+
+/*
+resource "aws_s3_directory_bucket" "db" {
+	bucket = "example--usw2-az1--x-s3"
+	location {
+		name = var.az[1]
+	}
+  //Bucket name must be in the following format
+	//[bucket_name]--[azid]--x-s3
+}
+
+resource "aws_s3_bucket_ownership_controls" "s1" {
+	bucket = aws_s3_bucket.b1.id
+	rule {
+		object_ownership = "BucketOwnerPreferred"
+		#object_ownership = "ObjectWriter"
+	}
+}
