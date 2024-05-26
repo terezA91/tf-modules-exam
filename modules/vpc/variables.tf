@@ -43,7 +43,8 @@ variable "default_gateway" {
 	description = "Gateway for access to the internet"
 }
 
-#SSH_key variables
+/*
+SSH_key variables
 variable "key_algorithm" {
   type        = string
   description = "Key_algorithm(rsa,ecdsa,ed25519)"
@@ -55,3 +56,4 @@ variable "rsa_bits" {
   description = "Length of key with rsa_algorithm"
   default     = 2048
 } 
+*/
