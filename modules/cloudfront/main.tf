@@ -14,7 +14,7 @@ resource "aws_cloudfront_distribution" "cf" {
 
   origin {
     domain_name              = var.origin_domain_name
-    origin_id                = var.orign_id
+    origin_id                = var.origin_id
     origin_access_control_id = aws_cloudfront_origin_access_control.oac.id
   }
 

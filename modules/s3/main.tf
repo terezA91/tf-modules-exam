@@ -14,16 +14,6 @@ resource "aws_s3_bucket" "b1" {
 	}
 }
 
-resource "aws_s3_directory_bucket" "db" {
-	count = var.directory_bucket ? 1 : 0
-  bucket = "${var.bucket_name}--usw2-az1--x-s3"
-  location {
-    name = "eu-north-1"
-  }
-  //Bucket name must be in the following format
-  //[bucket_name]--[azid]--x-s3
-}
-
 resource "aws_s3_object" "ob" {
   bucket = aws_s3_bucket.b1.id
   source = var.object_source
@@ -75,5 +65,15 @@ resource "aws_s3_bucket_notification" "bn" {
 		lambda_function_arn = var.lf_arn
 		events = ["s3:ObjectCreated:*"]
 	}
+}
+
+resource "aws_s3_directory_bucket" "db" {
+  count = var.directory_bucket ? 1 : 0
+  bucket = "${var.bucket_name}--usw2-az1--x-s3"
+  location {
+    name = "eu-north-1"
+  }
+  //Bucket name must be in the following format
+  //[bucket_name]--[azid]--x-s3
 }
 */
