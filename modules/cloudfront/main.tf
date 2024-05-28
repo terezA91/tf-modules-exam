@@ -80,7 +80,7 @@ data "aws_iam_policy_document" "iam-policy" {
   }
 }
 
-resource "aws_s3_bicket_policy" "s3-policy" {
+resource "aws_s3_bucket_policy" "s3-policy" {
   depends_on = [aws_cloudfront_distribution.cf]
   bucket     = var.origin_id
   policy     = data.aws_iam_policy_document.iam_policy.json
