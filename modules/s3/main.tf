@@ -25,7 +25,7 @@ resource "aws_s3_directory_bucket" "db" {
 }
 
 resource "aws_s3_object" "ob" {
-  bucket = aws_s3_bucket.b1.[count.index]
+  bucket = aws_s3_bucket.b1.id.count.index
   source = var.object_source
   key = var.object_name
 }
