@@ -15,7 +15,7 @@ variable "origin_id" {
 
 variable "cache_pid" {
   type        = string
-  value       = "658327ea-f89d-4fab-a63d-7e88639e58f6"
+  default     = "658327ea-f89d-4fab-a63d-7e88639e58f6"
   description = "Cache policy id for optimized cache"
 }
 
