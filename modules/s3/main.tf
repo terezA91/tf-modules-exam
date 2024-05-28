@@ -15,9 +15,11 @@ resource "aws_s3_bucket" "b1" {
 }
 
 resource "aws_s3_object" "ob" {
-  bucket = aws_s3_bucket.b1.id
+	depends_on = [aws_s3_bucket.b1]
+  bucket = aws_s3_bucket.b1.bucket
   source = var.object_source
   key = var.object_name
+	server_side_encryption = "AES256"
 }
 
 resource "aws_s3_bucket_public_access_block" "exam" {
