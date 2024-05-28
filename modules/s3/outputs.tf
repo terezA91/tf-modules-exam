@@ -7,7 +7,7 @@ output "bucket_arn" {
 }
 
 output "s3_bucket_name" {
-    value = aws_s3_bucket.name
+    value = aws_s3_bucket.b1.bucket
     description = "For referencing from cloudfront"
 }
 
