@@ -4,7 +4,7 @@ provider "aws" {
 }
 
 resource "aws_s3_bucket" "b1" {
-	count = var.directory_bucket ? 0 : 1
+	#count = var.directory_bucket ? 0 : 1
 	bucket = var.bucket_name
 	#bucket_prefix = "helma"  //for unique bucket_name
 	force_destroy = var.destroy_bucket
