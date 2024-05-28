@@ -70,7 +70,7 @@ data "aws_iam_policy_document" "iam-policy" {
     }
 
     //resources = ["arn:aws:s3:::${var.origin_bucket}/*"]
-    resourcecs = ["${var.s3_bucket_arn}/*"]
+    resources = ["${var.s3_bucket_arn}/*"]
 
     condition {
       test     = "StringEquals"
@@ -83,5 +83,5 @@ data "aws_iam_policy_document" "iam-policy" {
 resource "aws_s3_bucket_policy" "s3-policy" {
   depends_on = [aws_cloudfront_distribution.cf]
   bucket     = var.origin_id
-  policy     = data.aws_iam_policy_document.iam_policy.json
+  policy     = data.aws_iam_policy_document.iam-policy.json
 }
