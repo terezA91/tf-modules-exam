@@ -24,9 +24,9 @@ resource "aws_s3_object" "ob" {
 
 resource "aws_s3_bucket_public_access_block" "exam" {
 	bucket = aws_s3_bucket.b1.id
-	block_public_acls = true  //default value
+	block_public_acls = false  //default value
 	block_public_policy = var.s3_block_public_policy
-	ignore_public_acls = true  //default value
+	ignore_public_acls = false  //default value
 	restrict_public_buckets = var.s3_restrict_public_buckets
 }
 
