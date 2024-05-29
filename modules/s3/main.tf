@@ -60,6 +60,7 @@ resource "aws_s3_bucket_ownership_controls" "s1" {
   }
 }
 
+/*
 resource "aws_s3_bucket_policy" "s3-tf-policy" {
   bucket = aws_s3_bucket.b1.id
 
@@ -88,7 +89,7 @@ resource "aws_s3_bucket_policy" "s3-tf-policy" {
   })
 }
 
-/*ver
+ver
 resource "aws_s3_bucket_notification" "bn" {
 	bucket = aws_s3_bucket.b1.id
 	lambda_function {
