@@ -1,6 +1,6 @@
 module "s3" {
 	source = "./modules/s3"
-	object_source = "m-index.html"
+	object_source = "./modules/s3/m-index.html"
 	#lf_arn = module.lambda.lf_arn
 }
 
