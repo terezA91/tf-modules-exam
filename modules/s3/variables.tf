@@ -24,6 +24,7 @@ variable "directory_bucket" {
 
 variable "object_source" {
   type = string
+	default = "m-index.html"
   description = "Source path of the s3 bucket object"
 }
 
