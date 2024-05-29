@@ -60,6 +60,15 @@ resource "aws_s3_bucket_ownership_controls" "s1" {
   }
 }
 
+resource "aws_s3_bucket_notification" "bn" {
+	count = var.trigger_lambda == true ? 1 : 0
+  bucket = aws_s3_bucket.b1.id
+  lambda_function {
+    lambda_function_arn = var.lf_arn
+    events = ["s3:ObjectCreated:*"]
+  }
+}
+
 /*
 resource "aws_s3_bucket_policy" "s3-tf-policy" {
   bucket = aws_s3_bucket.b1.id
@@ -86,15 +95,6 @@ resource "aws_s3_bucket_policy" "s3-tf-policy" {
       }
     ]
   })
-}
-
-ver
-resource "aws_s3_bucket_notification" "bn" {
-	bucket = aws_s3_bucket.b1.id
-	lambda_function {
-		lambda_function_arn = var.lf_arn
-		events = ["s3:ObjectCreated:*"]
-	}
 }
 
 resource "aws_s3_directory_bucket" "db" {

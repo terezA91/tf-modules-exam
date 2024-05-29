@@ -1,5 +1,6 @@
 module "s3" {
 	source = "./modules/s3"
+	trigger_lambda = true
 	lf_arn = module.lambda.lf_arn
 }
 

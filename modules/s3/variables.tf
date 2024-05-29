@@ -78,9 +78,14 @@ variable "enable_acl" {
   description = "Enable or disable ACL"
 }
 
-/*ver
+variable "trigger_lambda" {
+	type = bool
+	default = false
+	description = "Trigger Lambda function or not"
+}
+
 variable "lf_arn" {
 	type = string
 	description = "Arn of lambda function"
 }
-*/
+
