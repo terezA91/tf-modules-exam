@@ -4,6 +4,7 @@ module "s3" {
 	#lf_arn = module.lambda.lf_arn
 }
 
+/*
 module "cf_distribution" {
 	source = "./modules/cloudfront"
 	s3_bucket_name = module.s3.s3_bucket_name
@@ -12,7 +13,7 @@ module "cf_distribution" {
 	s3_bucket_arn = module.s3.bucket_arn
 }
 
-/*
+
 module "lambda" {
 	source = "./modules/lambda_function"
 	bucket_arn = module.s3.bucket_arn
