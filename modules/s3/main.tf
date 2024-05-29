@@ -14,13 +14,16 @@ resource "aws_s3_bucket" "b1" {
 	}
 }
 
+/*
 resource "aws_s3_object" "ob" {
 	#depends_on = [aws_s3_bucket.b1]
   bucket = aws_s3_bucket.b1.bucket
-  source = "../../${var.object_source}"
+  source = "../../source_objects/${var.object_source}"
   key = var.object_name
+	content_type = var.as_website == true ? "text/html" : "image/jpeg"
 	server_side_encryption = "AES256"
 }
+*/
 
 resource "aws_s3_bucket_public_access_block" "exam" {
 	bucket = aws_s3_bucket.b1.id
@@ -34,14 +37,6 @@ resource "aws_s3_bucket_versioning" "bv" {
 	bucket = aws_s3_bucket.b1.id
 	versioning_configuration {
 		status = var.enable_versioning[0]
-	}
-}
-
-resource "aws_s3_bucket_website_configuration" "web" {
-	count = var.as_website == true ? 1 : 0  
-	bucket = aws_s3_bucket.b1.id
-	index_document {
-		suffix = "index.html"
 	}
 }
 
@@ -70,6 +65,24 @@ resource "aws_s3_bucket_notification" "bn" {
 }
 
 /*
+resource "aws_s3_directory_bucket" "db" {
+  count = var.directory_bucket ? 1 : 0
+  bucket = "${var.bucket_name}--usw2-az1--x-s3"
+  location {
+    name = "eu-north-1"
+  }
+  //Bucket name must be in the following format
+  //[bucket_name]--[azid]--x-s3
+}
+
+resource "aws_s3_bucket_website_configuration" "web" {
+  count = var.as_website == true ? 1 : 0
+  bucket = aws_s3_bucket.b1.id
+  index_document {
+    suffix = "index.html"
+  }
+}
+
 resource "aws_s3_bucket_policy" "s3-tf-policy" {
   bucket = aws_s3_bucket.b1.id
 
@@ -95,15 +108,5 @@ resource "aws_s3_bucket_policy" "s3-tf-policy" {
       }
     ]
   })
-}
-
-resource "aws_s3_directory_bucket" "db" {
-  count = var.directory_bucket ? 1 : 0
-  bucket = "${var.bucket_name}--usw2-az1--x-s3"
-  location {
-    name = "eu-north-1"
-  }
-  //Bucket name must be in the following format
-  //[bucket_name]--[azid]--x-s3
 }
 */
