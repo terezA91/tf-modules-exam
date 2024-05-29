@@ -60,6 +60,34 @@ resource "aws_s3_bucket_ownership_controls" "s1" {
   }
 }
 
+resource "aws_s3_bucket_policy" "s3-tf-policy" {
+  bucket = aws_s3_bucket.b1.id
+
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Id = "MyBucketPolicy"
+    Statement = [
+      {
+        Sid = "Allow-access-to-bucket"
+        Effect = "Allow"
+        Principal = "*"
+        Action = "s3:GetObject"
+        /*Resource = [
+          aws_s3_bucket.b1.arn,
+          "${aws_s3_bucket.b1.arn}/*",
+        ]
+        */
+        Resource = "arn:aws:s3:::${var.bucket_name}/*"
+        Condition = {
+          IpAddress = {
+            "aws:SourceIp" = "46.162.196.212"
+          }
+        }
+      }
+    ]
+  })
+}
+
 /*ver
 resource "aws_s3_bucket_notification" "bn" {
 	bucket = aws_s3_bucket.b1.id

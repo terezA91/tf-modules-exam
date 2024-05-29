@@ -24,13 +24,13 @@ variable "directory_bucket" {
 
 variable "object_source" {
   type = string
-	default = "m-index.html"
+	default = "index.html"
   description = "Source path of the s3 bucket object"
 }
 
 variable "object_name" {
   type = string
-  default = "m-index.html"
+  default = "index.html"
   description = "User-defined object name of the bucket"
 }
 
