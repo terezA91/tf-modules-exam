@@ -6,8 +6,7 @@ module "lambda" {
 module "s3" {
 	source = "./modules/s3"
 	trigger_lambda = true
-	bucket_arn = module.s3.bucket_arn
-	lf_arn = module.lambda.lf_arn
+	#lf_arn = module.lambda.lf_arn
 }
 
 /*
