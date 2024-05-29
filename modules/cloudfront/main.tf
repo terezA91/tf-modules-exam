@@ -20,7 +20,7 @@ resource "aws_cloudfront_distribution" "cf" {
   }
 
   enabled             = true
-  default_root_object = "m-index.html"
+  default_root_object = "index.html"
   wait_for_deployment = true
 
   default_cache_behavior {
@@ -29,8 +29,8 @@ resource "aws_cloudfront_distribution" "cf" {
     cache_policy_id        = var.cache_pid
     target_origin_id       = var.origin_id
     viewer_protocol_policy = "https-only" //or <allow-all>
-
-    /*	This is alternative of the argument <cache_policy_id>
+/*
+    This is alternative of the argument <cache_policy_id>
 		forwarded_values {
 			query_string = false
 

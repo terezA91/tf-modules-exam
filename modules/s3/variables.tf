@@ -34,16 +34,24 @@ variable "object_name" {
   description = "User-defined object name of the bucket"
 }
 
+variable "s3_block_public_acls" {
+	type = bool
+	default = true
+}
+
 variable "s3_block_public_policy" {
   type = bool
-  description = "Block `public_policy` in s3 or not"
-  default = false
+  default = true
+}
+
+variable "ignore_public_acls" {
+	type = bool
+	default = true
 }
 
 variable "s3_restrict_public_buckets" {
   type = bool
-  description = "Restrict public buckets in s3 or not"
-  default = false
+  default = true
 }
 
 variable "enable_versioning" {
