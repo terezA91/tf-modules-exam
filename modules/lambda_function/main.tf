@@ -72,3 +72,10 @@ resource "aws_lambda_permission" "alp" {
 	principal = "s3.amazonaws.com"
 	source_arn = var.bucket_arn 
 }
+
+resource "null_resource" "wait_for_lambda_trigger" {
+  depends_on   = [aws_lambda_permission.alp]
+  provisioner "local-exec" {
+    command = "sleep 3m"
+  }
+}
