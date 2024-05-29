@@ -76,6 +76,6 @@ resource "aws_lambda_permission" "alp" {
 resource "null_resource" "wait_for_lambda_trigger" {
   depends_on   = [aws_lambda_permission.alp]
   provisioner "local-exec" {
-    command = "sleep 3m"
+    command = "sleep 1m"
   }
 }
