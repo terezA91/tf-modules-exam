@@ -55,16 +55,18 @@ resource "aws_s3_bucket_ownership_controls" "s1" {
   }
 }
 
+/*ver
 resource "aws_s3_bucket_notification" "bn" {
 	#count = var.trigger_lambda == true ? 1 : 0
-  bucket = aws_s3_bucket.b1.id
+  bucket = aws_s3_bucket.b1.bucket
+
   lambda_function {
     lambda_function_arn = var.lf_arn
     events = ["s3:ObjectCreated:*"]
   }
 }
 
-/*
+
 resource "aws_s3_directory_bucket" "db" {
   count = var.directory_bucket ? 1 : 0
   bucket = "${var.bucket_name}--usw2-az1--x-s3"

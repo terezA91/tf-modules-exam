@@ -65,6 +65,17 @@ resource "aws_lambda_function" "tf-lambda-up" {
 	runtime = var.runtime_lang	
 }
 
+resource "aws_s3_bucket_notification" "bn" {
+  #count = var.trigger_lambda == true ? 1 : 0
+  bucket = aws_s3_bucket.b1.bucket
+
+  lambda_function {
+    //lambda_function_arn = var.lf_arn
+		lambda_function_arn = aws_lambda_function.tf-lambda-up.arn
+    events = ["s3:ObjectCreated:*"]
+  }
+}
+
 resource "aws_lambda_permission" "alp" {
 	statement_id = "AllowExecutionFromS3"
 	action = "lambda:InvokeFunction"
@@ -73,9 +84,11 @@ resource "aws_lambda_permission" "alp" {
 	source_arn = var.bucket_arn 
 }
 
+/*
 resource "null_resource" "wait_for_lambda_trigger" {
   depends_on   = [aws_lambda_permission.alp]
   provisioner "local-exec" {
     command = "sleep 1m"
   }
 }
+*/
