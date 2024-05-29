@@ -67,7 +67,7 @@ resource "aws_lambda_function" "tf-lambda-up" {
 
 resource "aws_s3_bucket_notification" "bn" {
   #count = var.trigger_lambda == true ? 1 : 0
-  bucket = aws_s3_bucket.b1.bucket
+  bucket = var.bucket_arn
 
   lambda_function {
     //lambda_function_arn = var.lf_arn
