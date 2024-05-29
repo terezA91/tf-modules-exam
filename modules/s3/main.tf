@@ -17,7 +17,7 @@ resource "aws_s3_bucket" "b1" {
 resource "aws_s3_object" "ob" {
 	#depends_on = [aws_s3_bucket.b1]
   bucket = aws_s3_bucket.b1.bucket
-  source = var.object_source
+  source = "../../${var.object_source}"
   key = var.object_name
 	server_side_encryption = "AES256"
 }
