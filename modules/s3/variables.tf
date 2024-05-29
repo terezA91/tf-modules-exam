@@ -29,7 +29,7 @@ variable "object_source" {
 
 variable "object_name" {
   type = string
-  default = "index.html"
+  default = "m-index.html"
   description = "User-defined object name of the bucket"
 }
 
