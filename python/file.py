@@ -1,4 +1,14 @@
 import json
+
+def lambda_handler(event, context):
+    print('Hello from  me....')
+    return {
+        'statusCode': 200,
+        'body': json.dumps('Hello from Lambda!')
+    }
+
+/*
+import json
 import os
 
 def lambda_handler(event, context):
@@ -9,3 +19,4 @@ def lambda_handler(event, context):
         'statusCode': 200,
         'body': json.dumps('Value of key is: ' + lf_env_var)
     }
+*/
