@@ -5,7 +5,8 @@ module "s3" {
 	lf_arn = module.lambda.lf_arn
 	lf_permission = module.lambda.lf_permission
 */
-		
+	cf_name = module.cf_distribution.cf_name
+	policy_for_cf = module.cf_distribution.policy_for_cf		
 }
 
 module "cf_distribution" {

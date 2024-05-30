@@ -98,3 +98,12 @@ variable "lf_arn" {
 	description = "Arn of lambda function"
 }
 
+variable "cf_name" {
+	type = any
+	description = "Name of the <aws_cloudfront_distribution> resource"
+}
+
+variable "policy_for_cf" {
+	type = any
+	description = "s3 bucket policy for cloudfront"
+}
