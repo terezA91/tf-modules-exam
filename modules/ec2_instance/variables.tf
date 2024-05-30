@@ -12,7 +12,7 @@ variable "rsa_bits" {
 
 variable "instance_type" {
 	type = string
-	default = "t2.micro"
+	default = "t3.micro"
 	description = "Type of EC2 instance(Mix of the CPU,RAM,Disk,Network components)"
 }
 
