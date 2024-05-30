@@ -1,8 +1,11 @@
 module "s3" {
 	source = "./modules/s3"
-	trigger_lambda = true
+/*lf section
+  trigger_lambda = true
 	lf_arn = module.lambda.lf_arn
 	lf_permission = module.lambda.lf_permission
+*/
+	
 }
 
 module "cf_distribution" {
