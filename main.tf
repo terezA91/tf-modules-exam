@@ -1,13 +1,18 @@
 module "s3" {
 	source = "./modules/s3"
-/*lf section
+
   trigger_lambda = true
 	lf_arn = module.lambda.lf_arn
 	lf_permission = module.lambda.lf_permission
-*/
 	
 }
 
+module "lambda" {
+  source = "./modules/lambda_function"
+  bucket_arn = module.s3.bucket_arn
+}
+
+/*
 module "cf_distribution" {
   source = "./modules/cloudfront"
   s3_bucket_name = module.s3.s3_bucket_name
@@ -16,13 +21,7 @@ module "cf_distribution" {
   s3_bucket_arn = module.s3.bucket_arn
 }
 
-/*
 module "vpc" {
 	source = "./modules/vpc" 
-}
-
-module "lambda" {
-  source = "./modules/lambda_function"
-  bucket_arn = module.s3.bucket_arn
 }
 */
