@@ -23,6 +23,12 @@ resource "aws_s3_object" "ob" {
 	server_side_encryption = "AES256"
 }
 
+resource "null_resource" "wait_for_lambda_trigger" {
+  depends_on   = [aws_s3_object.ob]
+  provisioner "local-exec" {
+    command = "sleep 1m"
+  }
+}
 
 resource "aws_s3_bucket_public_access_block" "exam" {
 	bucket = aws_s3_bucket.b1.id
