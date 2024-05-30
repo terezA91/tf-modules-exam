@@ -47,7 +47,7 @@ resource "aws_iam_policy" "access-to-cloudwatch" {
           "logs:PutLogEvents"
         ],
         "Resource": [
-          "arn:aws:logs:eu-north-1:983119644965:log-group:/aws/lambda/tf-lambda:*"
+          "arn:aws:logs:eu-north-1:983119644965:log-group:SomeLogGroupName:*"
         ]
       }
     ]
