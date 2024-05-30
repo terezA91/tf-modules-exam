@@ -14,7 +14,6 @@ resource "aws_s3_bucket" "b1" {
 	}
 }
 
-/*
 resource "aws_s3_object" "ob" {
 	#depends_on = [aws_s3_bucket.b1]
   bucket = aws_s3_bucket.b1.bucket
@@ -23,7 +22,6 @@ resource "aws_s3_object" "ob" {
 	content_type = var.as_website == true ? "text/html" : "image/jpeg"
 	server_side_encryption = "AES256"
 }
-*/
 
 resource "aws_s3_bucket_public_access_block" "exam" {
 	bucket = aws_s3_bucket.b1.id
@@ -85,32 +83,5 @@ resource "aws_s3_bucket_website_configuration" "web" {
   index_document {
     suffix = "index.html"
   }
-}
-
-resource "aws_s3_bucket_policy" "s3-tf-policy" {
-  bucket = aws_s3_bucket.b1.id
-
-  policy = jsonencode({
-    Version = "2012-10-17"
-    Id = "MyBucketPolicy"
-    Statement = [
-      {
-        Sid = "Allow-access-to-bucket"
-        Effect = "Allow"
-        Principal = "*"
-        Action = "s3:GetObject"
-        //Resource = [
-        //  aws_s3_bucket.b1.arn,
-        //  "${aws_s3_bucket.b1.arn}/*",
-        //]
-        Resource = "arn:aws:s3:::${var.bucket_name}/*"
-        Condition = {
-          IpAddress = {
-            "aws:SourceIp" = "46.162.196.212"
-          }
-        }
-      }
-    ]
-  })
 }
 */
