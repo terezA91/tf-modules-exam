@@ -15,12 +15,11 @@ resource "aws_s3_bucket" "b1" {
 }
 
 resource "aws_s3_object" "ob" {
-	#depends_on = [aws_s3_bucket.b1]
   bucket = aws_s3_bucket.b1.bucket
   source = "${path.module}/${var.object_source}"
   key = var.object_name
-	#content_type = var.as_website == true ? "text/html" : "image/jpeg"
-	#server_side_encryption = "AES256"
+	content_type = var.as_website == true ? "text/html" : "image/jpeg"
+	server_side_encryption = "AES256"
 }
 
 resource "aws_s3_bucket_public_access_block" "exam" {
@@ -52,7 +51,6 @@ resource "aws_s3_bucket_ownership_controls" "s1" {
     #object_ownership = "ObjectWriter"
   }
 }
-
 
 resource "aws_s3_bucket_notification" "bn" {
 	#count = var.trigger_lambda == true ? 1 : 0
