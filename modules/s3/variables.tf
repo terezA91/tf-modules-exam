@@ -16,8 +16,10 @@ variable "destroy_bucket" {
 	default = true
 }
 
+//The actual value will be set when creating the module for s3
 variable "lf_permission" {
 	type = any
+	default = ""
 	description = "For referencing <aws_lambda_permission> resource"
 }
 
@@ -89,8 +91,10 @@ variable "trigger_lambda" {
 	description = "Trigger Lambda function or not"
 }
 
+//The actual value will be set when creating the module for s3
 variable "lf_arn" {
 	type = string
+	default = ""
 	description = "Arn of lambda function"
 }
 
