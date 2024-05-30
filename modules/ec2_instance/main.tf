@@ -30,16 +30,16 @@ data "aws_ami" "ami" {
   owners = ["099720109477"] # Canonical(ubuntu)
 }
 
-resource "aws_instance" "ec2" {
+resource "aws_instance" "pub-ec2" {
   ami           = data.aws_ami.ami.id
-  instance_type = "t3.micro"
-  associate_public_ip_address = true
-  subnet_id = var.subnet_id
-  vpc_security_group_ids = []
+  instance_type = "t2.micro"
+  associate_public_ip_address = var.in_public_subnet
+  subnet_id = var.pub_sub_a_id
+  vpc_security_group_ids = [var.sec_group_id]
   key_name = aws_key_pair.key.key_name
-  user_data = "${file("install_docker.sh")}"
+  user_data = "${file("./user_data/install_docker.sh")}"
 
   tags = {
-    Name = "Custom EC2 - 2"
+    Name = "Custom EC2"
   }
 }
