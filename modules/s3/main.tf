@@ -64,6 +64,8 @@ resource "aws_s3_bucket_notification" "bn" {
     lambda_function_arn = var.lf_arn
     events = ["s3:ObjectCreated:*"]
   }
+	
+	depends_on = [${var.lf_permission}]
 }
 
 /*

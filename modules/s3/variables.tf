@@ -16,6 +16,11 @@ variable "destroy_bucket" {
 	default = true
 }
 
+variable "lf_permission" {
+	type = string
+	description = "For referencing <aws_lambda_permission> resource"
+}
+
 variable "directory_bucket" {
   type = bool
   default = false //Creating <General purpose bucket>
