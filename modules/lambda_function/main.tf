@@ -20,7 +20,7 @@ resource "aws_iam_role" "for-lambda-t" {
 				Principal = {
 					Service = "lambda.amazonaws.com"
 				}
-			},
+			}
 		]
 	})
 	tags = {
