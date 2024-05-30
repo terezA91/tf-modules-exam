@@ -6,7 +6,7 @@ variable "bucket_name" {
 
 variable "bucket_prefix" {
 	type = string
-	default = "helma"
+	default = "alp"
 	description = "Creates a unique bucket name beginning with the specified prefix"
 }
 

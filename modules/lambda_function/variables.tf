@@ -12,7 +12,7 @@ variable "source_dir" {
 
 variable "runtime_lang" {
 	type = string
-	default = "python3.10"
+	default = "python3.12"
 	description = "Type and version of the runtime language"
 }
 

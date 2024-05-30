@@ -28,7 +28,7 @@ resource "aws_iam_role" "for-lambda-t" {
 	}
 }
 
-
+/*
 resource "aws_iam_policy" "access-to-cloudwatch" {
   name = "AccessToCloudWatch"
   description = "Access to CloudWatch"
@@ -54,8 +54,8 @@ resource "aws_iam_policy" "access-to-cloudwatch" {
     ]
   })
 }
+*/
 
-/*
 resource "aws_iam_policy" "access-to-cloudwatch" {
 	name = "AccessToCloudWatch-t"
 	description = "some-desc"
@@ -74,7 +74,6 @@ resource "aws_iam_policy" "access-to-cloudwatch" {
 		]
 	})
 }
-*/
 
 resource "aws_iam_role_policy_attachment" "rp-attach" {
 	role = aws_iam_role.for-lambda-t.name
