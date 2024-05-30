@@ -4,6 +4,6 @@ output "lf_arn" {
 }
 
 output "lf_permission" {
-    value = aws_lambda_permission.alp.source_arn
+    value = aws_lambda_permission.alp
     description = "Name of the <aws_lambda_permission> resource"
 }
