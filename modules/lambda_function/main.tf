@@ -44,7 +44,7 @@ data "aws_iam_policy_document" "policy-t" {
 }
 
 resource "aws_iam_role_policy" "lambda_role_policy" {
-  policy = data.aws_iam_policy_document.policy.json
+  policy = data.aws_iam_policy_document.policy-t.json
   role   = aws_iam_role.for-lambda-t.id
   name   = "my-lambda-policy"
 }
