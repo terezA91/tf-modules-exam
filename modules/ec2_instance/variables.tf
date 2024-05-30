@@ -49,3 +49,8 @@ variable "sec_group_id" {
 	type = any
 	default = ""
 }
+
+variable "sh_file" {
+	type = string
+	description = "File_name for run containing script"
+}

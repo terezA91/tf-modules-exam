@@ -32,12 +32,12 @@ data "aws_ami" "ami" {
 
 resource "aws_instance" "pub-ec2" {
   ami           = data.aws_ami.ami.id
-  instance_type = "t2.micro"
+  instance_type = var.instance_type
   associate_public_ip_address = var.in_public_subnet
   subnet_id = var.pub_sub_a_id
   vpc_security_group_ids = [var.sec_group_id]
   key_name = aws_key_pair.key.key_name
-  user_data = "${file("./user_data/install_docker.sh")}"
+  user_data = "${file(${path.module}/./user_data/${var.filename})}"
 
   tags = {
     Name = "Custom EC2"
