@@ -3,10 +3,6 @@ provider "aws" {
 	profile = "default"
 }
 
-locals {
-	lf_perm = var.lf_permission
-}
-
 resource "aws_s3_bucket" "b1" {
 	#count = var.directory_bucket ? 0 : 1
 	bucket = var.bucket_name
@@ -69,7 +65,7 @@ resource "aws_s3_bucket_notification" "bn" {
     events = ["s3:ObjectCreated:*"]
   }
 	
-	depends_on = [local.lf_perm]
+	depends_on = [var.lf_permission]
 }
 
 /*

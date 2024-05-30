@@ -17,7 +17,7 @@ variable "destroy_bucket" {
 }
 
 variable "lf_permission" {
-	type = string
+	type = any
 	description = "For referencing <aws_lambda_permission> resource"
 }
 
