@@ -28,7 +28,30 @@ resource "aws_iam_role" "for-lambda-t" {
 	}
 }
 
+resource "aws_cloudwatch_log_group" "lf-loggroup" {
+  name = "/aws/lambda/${aws_lambda_function.tf-lambda-up.function_name}"
+}
 
+data "aws_iam_policy_document" "policy" {
+  statement {
+    actions = [
+      "logs:CreateLogStream",
+      "logs:PutLogEvents"
+    ]
+    resources = [
+      aws_cloudwatch_log_group.lf-loggroup.arn,
+      "${aws_cloudwatch_log_group.lf-loggroup.arn}:*"
+    ]
+  }
+}
+
+resource "aws_iam_role_policy" "ts_lambda_role_policy" {
+  policy = data.aws_iam_policy_document.policy.json
+  role   = aws_iam_role.for-lambda-t.id
+  name   = "my-lambda-policy"
+}
+
+/*
 resource "aws_iam_policy" "access-to-cloudwatch" {
   name = "AccessToCloudWatch"
   description = "Access to CloudWatch"
@@ -55,7 +78,7 @@ resource "aws_iam_policy" "access-to-cloudwatch" {
   })
 }
 
-/*
+
 resource "aws_iam_policy" "access-to-cloudwatch" {
 	name = "AccessToCloudWatch-t"
 	description = "some-desc"
@@ -74,12 +97,12 @@ resource "aws_iam_policy" "access-to-cloudwatch" {
 		]
 	})
 }
-*/
 
 resource "aws_iam_role_policy_attachment" "rp-attach" {
 	role = aws_iam_role.for-lambda-t.name
 	policy_arn = aws_iam_policy.access-to-cloudwatch.arn
 }
+*/
 
 data "archive_file" "zip-of-content" {
 	type = "zip"
