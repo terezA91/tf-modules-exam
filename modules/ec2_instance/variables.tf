@@ -17,16 +17,19 @@ variable "pub_sub_a_id" {
 
 variable "pub_sub_b_id" {
   type = string
+	default = ""
   description = "Id of the public subnet(in <b> zone)"
 }
 
 variable "priv_sub_a_id" {
   type = string
+	default = ""
   description = "Id of the private subnet(in <a> zone)"
 }
 
 variable "priv_sub_b_id" {
   type = string
+	default = ""
   description = "Id of the private subnet(in <b> zone)"
 }
 
