@@ -1,12 +1,8 @@
-module "vpc" {
-  source = "./modules/vpc"
-}
-
 module "ec2" {
   source = "./modules/ec2_instance"
 
-	pub_sub_a_id = module.vpc.pub_sub_a_id
-	sec_group_id = module.vpc.sec_group_id	
+	#pub_sub_a_id = module.vpc.pub_sub_a_id
+	#sec_group_id = module.vpc.sec_group_id	
 	sh_file      = "docker_install.sh"
 }
 
@@ -39,4 +35,7 @@ module "lambda" {
   bucket_arn = module.s3.bucket_arn
 }
 
+module "vpc" {
+  source = "./modules/vpc"
+}
 */

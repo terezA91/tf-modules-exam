@@ -24,6 +24,7 @@ variable "in_public_subnet" {
 
 variable "pub_sub_a_id" {
 	type = string
+	default = ""
 	description = "Id of the public subnet(in <a> zone)"
 }
 
