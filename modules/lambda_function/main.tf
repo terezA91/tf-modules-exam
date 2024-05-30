@@ -104,12 +104,11 @@ resource "aws_lambda_permission" "alp" {
 	source_arn = var.bucket_arn 
 }
 
-
+/*
 resource "null_resource" "wait_for_lambda_trigger" {
   depends_on   = [aws_lambda_function.tf-lambda-up]
   provisioner "local-exec" {
     command = "sleep 1m"
   }
 }
-
-
+*/

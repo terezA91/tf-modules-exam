@@ -14,15 +14,16 @@ resource "aws_s3_bucket" "b1" {
 	}
 }
 
+/*
 resource "aws_s3_object" "ob" {
 	#depends_on = [aws_s3_bucket.b1]
   bucket = aws_s3_bucket.b1.bucket
   source = "${path.module}/${var.object_source}"
   key = var.object_name
-	content_type = var.as_website == true ? "text/html" : "image/jpeg"
-	server_side_encryption = "AES256"
+	#content_type = var.as_website == true ? "text/html" : "image/jpeg"
+	#server_side_encryption = "AES256"
 }
-
+*/
 resource "aws_s3_bucket_public_access_block" "exam" {
 	bucket = aws_s3_bucket.b1.id
 	block_public_acls = var.s3_block_public_acls
