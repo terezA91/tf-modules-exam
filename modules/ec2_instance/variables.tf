@@ -1,3 +1,15 @@
+variable "key_algorithm" {
+  type        = string
+  description = "Key_algorithm(rsa, ecdsa or ed25519)"
+  default     = "RSA"
+}
+
+variable "rsa_bits" {
+  type        = string
+  description = "Length of key with rsa_algorithm"
+  default     = 2048
+}
+
 variable "instance_type" {
 	type = string
 	default = "t2.micro"
