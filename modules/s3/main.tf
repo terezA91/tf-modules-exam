@@ -14,6 +14,7 @@ resource "aws_s3_bucket" "b1" {
 	}
 }
 
+/*
 resource "aws_s3_object" "ob" {
 	#depends_on = [aws_s3_bucket.b1]
   bucket = aws_s3_bucket.b1.bucket
@@ -22,6 +23,7 @@ resource "aws_s3_object" "ob" {
 	content_type = var.as_website == true ? "text/html" : "image/jpeg"
 	server_side_encryption = "AES256"
 }
+*/
 
 resource "aws_s3_bucket_public_access_block" "exam" {
 	bucket = aws_s3_bucket.b1.id
