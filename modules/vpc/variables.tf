@@ -4,13 +4,13 @@ variable "backend_path" {
 	type = string
 	description = "The path of Terraform backend"
 }
-*/
 
 variable "provider_version" {
 	type = string
 	default = "~> 4.62"
 	description = "Defining the version of the cloud provider"
 }
+*/
 
 #Vpc variables
 variable "vpc_cidr" {
