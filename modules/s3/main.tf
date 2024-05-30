@@ -65,7 +65,7 @@ resource "aws_s3_bucket_notification" "bn" {
     events = ["s3:ObjectCreated:*"]
   }
 	
-	depends_on = [${var.lf_permission}]
+	depends_on = ["${var.lf_permission}"]
 }
 
 /*
