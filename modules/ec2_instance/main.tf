@@ -37,7 +37,6 @@ resource "aws_instance" "pub-ec2" {
   #subnet_id = var.pub_sub_a_id
   #vpc_security_group_ids = [var.sec_group_id]
   key_name = aws_key_pair.key.key_name
-  #user_data = "${file(${path.module}/./user_data/${var.filename})}"
   user_data = "${path.module}/./user_data/${var.sh_file}"
 
   tags = {
